@@ -1,0 +1,33 @@
+{
+  "name": "playwright-enterprise-framework",
+  "version": "1.0.0",
+  "description": "Sample Playwright Suite",
+  "homepage": "https://github.com/je-lagman/playwright-enterprise-framework#readme",
+  "bugs": {
+    "url": "https://github.com/je-lagman/playwright-enterprise-framework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/je-lagman/playwright-enterprise-framework.git"
+  },
+  "license": "ISC",
+  "author": "Jerome Maynard Lagman",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:report": "npx playwright test show-report",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @regression",
+    "test:critical": "npx playwright test --grep @critical"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.5.0"
+  }
+}
