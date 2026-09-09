@@ -1,17 +1,13 @@
-import { test } from '@playwright/test';
-import { LoginPage } from '@pages/LoginPage';
-import { ProductsPage } from '@pages/ProductsPage';
-import { CartPage } from '@pages/CartPage';
-import { CheckoutPage } from '@pages/CheckoutPage';
+import { test } from '@fixtures/test-fixtures';
 
 test.describe('Checkout process', () => {
    
-    test('user can complete checkout process', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
-        const cartPage = new CartPage(page);
-        const checkoutPage = new CheckoutPage(page);
+    test('user can complete checkout process', async ({
+        loginPage,
+        productsPage,
+        cartPage,
+        checkoutPage
+    }) => {
 
         //Login
         await loginPage.navigate();

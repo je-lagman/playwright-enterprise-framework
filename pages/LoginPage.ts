@@ -27,4 +27,11 @@ export class LoginPage {
         await this.loginButton.click();
     }
 
+    async expectErrorMessageVisible(): Promise<void> {
+        await this.errorMessage.waitFor({ state: 'visible' });
+    }
+
+    async expectToHaveURL(url: string): Promise<void> {
+        await this.page.waitForURL(url);
+    }
 }

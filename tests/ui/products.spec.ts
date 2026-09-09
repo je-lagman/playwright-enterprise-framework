@@ -1,12 +1,8 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { ProductsPage } from '../../pages/ProductsPage';
+import { test } from '@fixtures/test-fixtures';
 
 test.describe('Products Page', () => {
 
-    test('user can add products to cart', async ({ page }) => {
-        const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
+    test('user can add products to cart', async ({ loginPage, productsPage }) => {
 
         await loginPage.navigate();
 
