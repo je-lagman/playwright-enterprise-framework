@@ -1,4 +1,5 @@
 import { test } from '@fixtures/test-fixtures';
+import { users } from '@data/users';
 
 test.describe('Login Tests', () => {
 
@@ -9,8 +10,8 @@ test.describe('Login Tests', () => {
 
         await loginPage.navigate();
         await loginPage.login(
-            'standard_user',
-            'secret_sauce'
+            users.standardUser.username,
+            users.standardUser.password
         );
 
         await loginPage.expectToHaveURL('inventory.html');
@@ -20,8 +21,8 @@ test.describe('Login Tests', () => {
 
         await loginPage.navigate();
         await loginPage.login(
-            'invalid_user',
-            'invalid_password'
+            users.invalidUser.username,
+            users.invalidUser.password
         );
 
         await loginPage.expectErrorMessageVisible();

@@ -1,4 +1,6 @@
 import { test } from '@fixtures/test-fixtures';
+import { users } from '@data/users';
+import { products } from '@data/products';
 
 test.describe('Products Page', () => {
 
@@ -7,14 +9,14 @@ test.describe('Products Page', () => {
         await loginPage.navigate();
 
         await loginPage.login(
-            'standard_user',
-            'secret_sauce'
+            users.standardUser.username,
+            users.standardUser.password
         );
 
         await productsPage.expectPageLoaded();
 
         await productsPage.addProductToCart(
-            'Sauce Labs Backpack'
+            products.backpack
         );
 
         await productsPage.expectCartItemCount(1);

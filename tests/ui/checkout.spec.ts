@@ -1,4 +1,7 @@
 import { test } from '@fixtures/test-fixtures';
+import { users } from '@data/users';
+import { products } from '@data/products';
+import { checkoutData } from '@data/checkout';
 
 test.describe('Checkout process', () => {
    
@@ -13,15 +16,15 @@ test.describe('Checkout process', () => {
         await loginPage.navigate();
 
         await loginPage.login(
-            'standard_user',
-            'secret_sauce'
+            users.standardUser.username,
+            users.standardUser.password
         );
 
         //Products
         await productsPage.expectPageLoaded();
 
         await productsPage.addProductToCart(
-            'Sauce Labs Backpack'
+            products.backpack
         );
 
         await productsPage.expectCartItemCount(1);
@@ -32,16 +35,16 @@ test.describe('Checkout process', () => {
         await cartPage.expectPageLoaded();
 
         await cartPage.expectProductInCart(
-            'Sauce Labs Backpack'
+            products.backpack
         );
 
         await cartPage.checkout();
 
         //Checkout
         await checkoutPage.enterCustomerInformation(
-            'Jerome',
-            'Lagman',
-            '2000'
+            checkoutData.validCustomer.firstName,
+            checkoutData.validCustomer.lastName,
+            checkoutData.validCustomer.postalCode
         );
 
         await checkoutPage.continue();
