@@ -1,4 +1,4 @@
-import { APIRequest, APIResponse } from '@playwright/test';
+import { APIResponse } from '@playwright/test';
 import { ApiClient } from '@api/ApiClients';
 
 export class UsersAPI {
