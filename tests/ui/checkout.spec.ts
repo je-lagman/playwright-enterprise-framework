@@ -46,4 +46,38 @@ test.describe('Checkout process ', () => {
         //Validation
         await checkoutPage.expectConfirmationMessage();
     })
+   
+    test('user cannot complete checkout process with empty checkout form @smoke @regression', async ({
+        productsPage,
+        cartPage,
+        checkoutPage
+    }) => {
+
+        //Products
+        await productsPage.navigate();
+
+        await productsPage.expectPageLoaded();
+
+        await productsPage.addProductToCart(
+            products.backpack
+        );
+
+        await productsPage.expectCartItemCount(1);
+
+        //Cart
+        await productsPage.openCart();
+
+        await cartPage.expectPageLoaded();
+
+        await cartPage.expectProductInCart(
+            products.backpack
+        );
+
+        await cartPage.checkout();
+
+        await checkoutPage.continue();
+
+        //Validation
+        await checkoutPage.expectErrorMessage();
+    })
 });

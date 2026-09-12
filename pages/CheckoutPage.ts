@@ -8,6 +8,7 @@ export class CheckoutPage {
     readonly continueButton: Locator;
     readonly finishButton: Locator;
     readonly confirmationMessage: Locator;
+    readonly errorMessage: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -15,6 +16,7 @@ export class CheckoutPage {
         this.firstNameInput = page.getByPlaceholder('First Name');
         this.lastNameInput = page.getByPlaceholder('Last Name');
         this.postalCodeInput = page.getByPlaceholder('Zip/Postal Code');
+        this.errorMessage = page.locator('[data-test="error"]')
 
         this.continueButton = page.getByRole('button', {
             name: 'Continue'
@@ -37,6 +39,10 @@ export class CheckoutPage {
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);
         await this.postalCodeInput.fill(postalCode);
+    }
+
+    async expectErrorMessage(): Promise<void> {
+        await expect(this.errorMessage).toBeVisible();
     }
 
     async continue(): Promise<void> {

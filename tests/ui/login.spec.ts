@@ -1,5 +1,6 @@
 import { test } from '@fixtures/test-fixtures';
 import { users } from '@data/users';
+import { LoginPage } from '@pages/LoginPage';
 
 test.use({
     storageState: {
@@ -38,6 +39,16 @@ test.describe('Login Tests', () => {
 
         await loginPage.navigate();
         await loginPage.login('','');
+
+        await loginPage.expectErrorMessageVisible();
+    });
+
+    test('user cannot login using locked out credentials @regression', async ({ loginPage }) => {
+        await loginPage.navigate();
+        await loginPage.login(
+            users.locked_out.username,
+            users.locked_out.password
+        );
 
         await loginPage.expectErrorMessageVisible();
     });

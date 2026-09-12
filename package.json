@@ -1,7 +1,7 @@
 {
   "name": "playwright-enterprise-framework",
   "version": "1.0.0",
-  "description": "Sample Playwright Suite",
+  "description": "Scalable Playwright automation framework with POM, fixtures, env config, API layer, and CI integration.",
   "homepage": "https://github.com/je-lagman/playwright-enterprise-framework#readme",
   "bugs": {
     "url": "https://github.com/je-lagman/playwright-enterprise-framework/issues"
@@ -23,12 +23,18 @@
     "test:firefox": "npx playwright test --project=firefox",
     "test:webkit": "npx playwright test --project=webkit",
     "test:smoke": "npx playwright test --grep @smoke",
-    "test:regression": "npx playwright test --grep @regression"
+    "test:regression": "npx playwright test --grep @regression",
+    "typecheck": "tsc --noEmit"
+    
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.70.0",
+    "@typescript-eslint/parser": "^8.70.0",
     "dotenv": "^17.4.2",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
     "typescript": "5.9"
   }
 }

@@ -11,7 +11,7 @@ test.describe('Users API', () => {
             'x-api-key': config.reqresApiKey,
         });
 
-    test('can retrieve users', async ({ request }) => {
+    test('can retrieve users @regression', async ({ request }) => {
         const usersAPI = new UsersAPI(buildClient(request));
         const response = await usersAPI.getUsers(1);
 
@@ -21,7 +21,7 @@ test.describe('Users API', () => {
         expect(body.data.length).toBeGreaterThan(0);
     });
 
-    test('can retrieve a specific user', async ({ request }) => {
+    test('can retrieve a specific user @regression', async ({ request }) => {
         const usersAPI = new UsersAPI(buildClient(request));
         const response = await usersAPI.getUser(2);
 
@@ -30,7 +30,7 @@ test.describe('Users API', () => {
         expect(body.data.id).toBe(2);
     });
 
-    test('can create a user', async ({ request }) => {
+    test('can create a user @regression', async ({ request }) => {
         const usersAPI = new UsersAPI(buildClient(request));
         const name = randomName();
         const job = randomJobTitle();
@@ -41,4 +41,11 @@ test.describe('Users API', () => {
         expect(body.name).toBe(name);
         expect(body.job).toBe(job);
     });
+
+    test('returns 404 for a non-existent user @regression', async ({ request }) => {
+        const usersAPI = new UsersAPI(buildClient(request));
+        const response = await usersAPI.getUser(999999);
+
+        expect(response.status()).toBe(404);
+    })
 });

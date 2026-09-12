@@ -5,10 +5,11 @@ export class CartPage {
     readonly pageTitle: Locator;
     readonly checkoutButton: Locator;
     readonly continueShoppingButton: Locator;
+    readonly cartItems: Locator;
 
     constructor(page: Page) {
         this.page = page;
-
+        this.cartItems = page.locator('.cart_item');
         this.pageTitle = page.getByText('Your Cart');
         this.checkoutButton = page.getByRole('button', { 
             name: 'Checkout' 
@@ -17,6 +18,10 @@ export class CartPage {
         this.continueShoppingButton = page.getByRole('button', {
             name: 'Continue Shopping'
         });
+    }
+
+    async expectCartIsEmpty(): Promise<void> {
+        await expect(this.cartItems).toHaveCount(0);
     }
 
     async expectPageLoaded(): Promise<void> {
