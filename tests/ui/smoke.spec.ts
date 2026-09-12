@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
 
-test('SauceDemo application is accessible', async ({ page }) => {
+test('SauceDemo application is accessible @smoke', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.navigate();

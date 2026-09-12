@@ -10,7 +10,7 @@ test.use({
 
 test.describe('Login Tests', () => {
 
-    test('user can login successfully', async ({ 
+    test('user can login successfully @smoke @regression', async ({ 
         loginPage,
     }) => {
 
@@ -20,7 +20,7 @@ test.describe('Login Tests', () => {
             users.standard.password
         );
 
-        await loginPage.expectToHaveURL('inventory.html');
+        await loginPage.expectLandingPage();
     });
 
     test('user cannot login with invalid credentials', async ({ loginPage }) => {

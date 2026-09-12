@@ -3,7 +3,7 @@ import { products } from '@data/products';
 
 test.describe('Products Page', () => {
 
-    test('user can add products to cart', async ({ productsPage }) => {
+    test('user can add products to cart @smoke @regression', async ({ productsPage }) => {
         
         await productsPage.navigate();
 

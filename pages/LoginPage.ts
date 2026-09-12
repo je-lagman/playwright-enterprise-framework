@@ -1,7 +1,8 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class LoginPage {
     readonly page: Page;
+    readonly pageTitle: Locator;
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
@@ -9,6 +10,7 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
+        this.pageTitle = page.getByText('Products');
         this.usernameInput = page.getByPlaceholder('Username');
         this.passwordInput = page.getByPlaceholder('Password');
         this.loginButton = page.getByRole('button', { 
@@ -31,7 +33,7 @@ export class LoginPage {
         await this.errorMessage.waitFor({ state: 'visible' });
     }
 
-    async expectToHaveURL(url: string): Promise<void> {
-        await this.page.waitForURL(url);
+    async expectLandingPage(): Promise<void> {
+        await expect(this.pageTitle).toBeVisible();
     }
 }
