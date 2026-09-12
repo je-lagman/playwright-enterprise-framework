@@ -1,17 +1,23 @@
 import { test } from '@fixtures/test-fixtures';
 import { users } from '@data/users';
 
+test.use({
+    storageState: {
+        cookies: [],
+        origins: [],
+    },
+});
+
 test.describe('Login Tests', () => {
 
     test('user can login successfully', async ({ 
         loginPage,
-        page,
     }) => {
 
         await loginPage.navigate();
         await loginPage.login(
-            users.standardUser.username,
-            users.standardUser.password
+            users.standard.username,
+            users.standard.password
         );
 
         await loginPage.expectToHaveURL('inventory.html');
@@ -21,8 +27,8 @@ test.describe('Login Tests', () => {
 
         await loginPage.navigate();
         await loginPage.login(
-            users.invalidUser.username,
-            users.invalidUser.password
+            users.invalid.username,
+            users.invalid.password
         );
 
         await loginPage.expectErrorMessageVisible();

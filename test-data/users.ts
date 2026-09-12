@@ -1,9 +1,9 @@
 export const users = {
-    standardUser: {
+    standard: {
         username: 'standard_user',
         password: 'secret_sauce'
     },
-    invalidUser: {
+    invalid: {
         username: 'invalid_user',
         password: 'invalid_password'
     },

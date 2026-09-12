@@ -1,26 +1,18 @@
 import { test } from '@fixtures/test-fixtures';
-import { users } from '@data/users';
 import { products } from '@data/products';
 import { checkoutData } from '@data/checkout';
 
 test.describe('Checkout process', () => {
    
     test('user can complete checkout process', async ({
-        loginPage,
         productsPage,
         cartPage,
         checkoutPage
     }) => {
 
-        //Login
-        await loginPage.navigate();
-
-        await loginPage.login(
-            users.standardUser.username,
-            users.standardUser.password
-        );
-
         //Products
+        await productsPage.navigate();
+
         await productsPage.expectPageLoaded();
 
         await productsPage.addProductToCart(

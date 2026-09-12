@@ -14,6 +14,10 @@ export class ProductsPage {
         this.cartBadge = page.locator('.shopping_cart_badge');
     }
 
+    async navigate(): Promise<void> {
+        await this.page.goto('/inventory.html')
+    }
+
     async expectPageLoaded(): Promise<void> {
         await expect(this.pageTitle).toBeVisible();
     }
