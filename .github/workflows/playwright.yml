@@ -23,7 +23,7 @@ jobs:
       run: npx playwright test
       env:
         REQRES_API_KEY: ${{ secrets.REQRES_API_KEY }}
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v6
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
