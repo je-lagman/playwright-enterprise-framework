@@ -23,7 +23,7 @@ test.describe('Login Tests', () => {
         await loginPage.expectLandingPage();
     });
 
-    test('user cannot login with invalid credentials', async ({ loginPage }) => {
+    test('user cannot login with invalid credentials @regression', async ({ loginPage }) => {
 
         await loginPage.navigate();
         await loginPage.login(
@@ -34,7 +34,7 @@ test.describe('Login Tests', () => {
         await loginPage.expectErrorMessageVisible();
     });
 
-    test('user cannot login with empty credentials', async ({ loginPage }) => {
+    test('user cannot login with empty credentials @regression', async ({ loginPage }) => {
 
         await loginPage.navigate();
         await loginPage.login('','');

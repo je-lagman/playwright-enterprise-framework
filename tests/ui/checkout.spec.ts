@@ -2,9 +2,9 @@ import { test } from '@fixtures/test-fixtures';
 import { products } from '@data/products';
 import { checkoutData } from '@data/checkout';
 
-test.describe('Checkout process @smoke @regression', () => {
+test.describe('Checkout process ', () => {
    
-    test('user can complete checkout process', async ({
+    test('user can complete checkout process @smoke @regression', async ({
         productsPage,
         cartPage,
         checkoutPage

@@ -30,7 +30,7 @@ export class LoginPage {
     }
 
     async expectErrorMessageVisible(): Promise<void> {
-        await this.errorMessage.waitFor({ state: 'visible' });
+        await expect(this.errorMessage).toBeVisible();
     }
 
     async expectLandingPage(): Promise<void> {
